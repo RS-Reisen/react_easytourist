@@ -9,7 +9,7 @@ This repository will hold the [Source Code](/app/) and the [built files](/app/bu
 Insert this code on your Squarespace site.
 
 ```html
-<script defer="defer" src="https://cdn.jsdelivr.net/gh/RS-Reisen/sqsp_easytourist/app/build/static/js/main.2a743ecd.js"></script>
+<script defer="defer" src="https://cdn.jsdelivr.net/gh/RS-Reisen/sqsp_easytourist/app/build/static/js/main.js"></script>
 
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
