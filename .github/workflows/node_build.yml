@@ -5,6 +5,7 @@ name: Build app
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
