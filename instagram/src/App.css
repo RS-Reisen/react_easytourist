@@ -2,37 +2,73 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#instafeed {
+  display: grid;
+  width: 50vw;
+  margin: auto;
+  grid-template-areas:
+    "big big smalla"
+    "big big smallb"
+    "smallc smalld smalle"
+  ;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ig-thumb:nth-child(1) {
+  grid-area: big;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ig-thumb {
+  position: relative;
+}
+
+.ig-thumbnail {
+  display: block;
+  width: 100%;
+  /* height: auto; */
+}
+
+.ig-caption-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity .5s ease;
+  background-color: #000000b9;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.ig-thumb:hover .ig-caption-overlay {
+  opacity: 1;
+}
+
+.ig-caption {
   color: white;
+  max-height: 50%;
+  overflow-y: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  /* width: 50px; */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Add a hover effect if you want */
+.fa:hover {
+  filter: brightness(.9);
+}
+
+.fa-instagram {
+  background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+  color: white;
 }

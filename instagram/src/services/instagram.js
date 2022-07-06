@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const INSTAGRAM_URL = 'https://graph.instagram.com/'
 const PROFILE_ID = 17841406438473112
-const ACCESS_TOKEN = 'IGQVJYVGYxZA0xwNG9rZA0ZAPQkJoTEo0SC05cTE2eVVJSnp6ck5fN0NVM19GeVBUcm03VWVyZAWNYcHprZAWJhMDJzVXZAVNTNSck02ZAzJvWkZABZAS1Ob3dPUVRIamZAUMERGblA1NzAwMUU3V1V3cktHQ0tSSFFNQzQyb0k2ZAWFV'
+const ACCESS_TOKEN = 'IGQVJXSDZAldDg2WWJOQ1JLQ3pHbXVGcnB0Y0U1RnhrS3FoU3FYMnlMQlpDLWQyazNCaVNZAT2l1UFlJYTV2UVVib2NCN1RDMzNXY1VUZAVpzTUUtNFBMeDkwalJfaEJvVi14VTkwWFp3'
 
 class InstagramService {
     getProfileInfo() {
@@ -16,6 +16,7 @@ class InstagramService {
             .then((response) => {return response.data.data})
             .catch((error) => {console.log(error); return null})
     }
+
 }
 
 export default new InstagramService();

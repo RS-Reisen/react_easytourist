@@ -10,7 +10,7 @@ class App extends Component {
 
   async componentDidMount() {
     let p_info = await InstagramService.getProfileInfo()
-    let m_info = await InstagramService.getMediaInfo()
+    let m_info = (await InstagramService.getMediaInfo()).splice(0, 6)
     this.setState({profile_info: p_info, media_info: m_info})
   }
 
@@ -18,19 +18,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>{this.state.profile_info?.username || 'Loading'}</h1>
+        <h1>{<a href={`https://instagram.com/${this.state.profile_info?.username}`}>{'@' + this.state.profile_info?.username}</a> || 'Loading'}</h1>
         <pre>account type: {this.state.profile_info?.account_type}, user id: {this.state.profile_info?.id}, {this.state.profile_info?.media_count} uploads</pre>
-        {/* <pre>{JSON.stringify(this.state.profile_info, null, 2)}</pre> */}
 
-        {this.state.media_info?.map((media, i) => (
-          <div key={i}>
-            {/* {JSON.stringify(media)} */}
-            <h2>{media.caption}</h2>
-            <pre>{media.id}, {media.media_type}, {media.timestamp}, {media.username}</pre>
-            <img src={media.media_url} alt={media.caption} width="100px"></img>
-            <a href={media.permalink}>Mehr Information</a>
-          </div>
-        ))}
+        <div id='instafeed'>
+          {this.state.media_info?.map((media, i) => (
+              <div className='ig-thumb' key={i}>
+                <img className='ig-thumbnail' src={media.thumbnail_url || media.media_url} alt={media.caption}/>
+                <div className='ig-caption-overlay'>
+                    <p className='ig-caption'>{media.caption || `Image ${i}`}</p>
+                    {/* <small>{media.id}, {media.media_type}, {media.timestamp}, {media.username}</small> */}
+                    {/* eslint-disable-next-line */}
+                    <a href={media.permalink} className='fa fa-instagram'></a>
+                </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
