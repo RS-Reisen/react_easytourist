@@ -6,6 +6,7 @@
   display: grid;
   width: 50vw;
   margin: auto;
+  grid-gap: 20px;
   grid-template-areas:
     "big big smalla"
     "big big smallb"
@@ -24,7 +25,6 @@
 .ig-thumbnail {
   display: block;
   width: 100%;
-  /* height: auto; */
 }
 
 .ig-caption-overlay {
@@ -57,13 +57,11 @@
 .fa {
   padding: 10px;
   font-size: 30px;
-  /* width: 50px; */
   text-align: center;
   text-decoration: none;
   border-radius: 25%;
 }
 
-/* Add a hover effect if you want */
 .fa:hover {
   filter: brightness(.9);
 }
