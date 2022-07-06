@@ -1,20 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <script type="text/javascript" src="js/instafeed.min.js"></script> -->
-</head>
-<body>
-    <div id="instafeed"></div>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.curator.io/3.1/css/curator.css"
+    />
+    <style>
+      a[href|="https://curator.io"]
+      {
+        display: none !important;
+      }
 
-    <script type="text/javascript">
-        var feed = new Instafeed({
-        accessToken: 'IGQVJWNWxvRlhXNlF1Y1hrMmhEWGdPUTRfMElPdlkyeTZAJYzUwVTJ2RWpaaS1LOGxFRVpvUTI4bWs4VFdSWlBBb3E5STBmbGM2Y2hoc2RLWHRIdy1pZAXFhc3ZAnMTg4aU5jRlA2RXZAhRzctbkNjN1V0YwZDZD'
-        });
-        feed.run();
-    </script>
-</body>
+      a[id^="powered_by_pixlee"] {
+        position: fixed;
+        top: -100px;
+      }
+    </style>
+  </head>
+  <body style="background-color: whitesmoke">
+    <!-- <div id="snapwidget">
+        <h1>Snapwidget</h1>
+        <script src="https://snapwidget.com/js/snapwidget.js"></script>
+        <iframe id="snapIframe" src="https://snapwidget.com/embed/1002225" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
+    </div>
+
+    <div id="socialfeed">
+      <h1>Socialfeed.pixlee.com</h1>
+      <div id="pixlee_container"></div>
+      <script type="text/javascript">
+        window.PixleeAsyncInit = function () {
+          Pixlee.init({ apiKey: "qA4R1w-nfxCCOgNhXrf_" });
+          Pixlee.addSimpleWidget({ widgetId: "36686" });
+        };
+      </script>
+      <script src="//instafeed.assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
+    </div> -->
+
+    <div id="curator">
+      <h1>Curator.io</h1>
+      <a href="https://app.curator.io/dashboard">Curator.io Dashboard</a>
+      <hr>
+      <div id="curator-feed-default-feed-layout"></div>
+
+      <script type="text/javascript">
+        (function () {
+            var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+            i.src="https://cdn.curator.io/published/b03045cb-c301-4991-8a7a-f11748e3d372.js";
+            e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+        })();
+      </script>
+    </div>
+  </body>
 </html>
