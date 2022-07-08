@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import EasytouristService from './services/easytourist'
 import { parseXml } from './utils/xmlUtils'
-import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Chip, Grid, Card } from '@mui/material'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { green } from '@mui/material/colors';
@@ -33,43 +33,54 @@ export default class App extends Component {
         <h1>Squarespace - Easytourist</h1>
 
         {this.state.initialized ?
-          <p><CheckCircleRoundedIcon sx={{color: green[500], 'verticalAlign': 'middle'}}/> Initialized</p> :
-          <p><CancelIcon color='error' sx={{'verticalAlign': 'middle'}}/> Not initialized</p>
+          <p><CheckCircleRoundedIcon sx={{ color: green[500], 'verticalAlign': 'middle' }} /> Initialized</p> :
+          <p><CancelIcon color='error' sx={{ 'verticalAlign': 'middle' }} /> Not initialized</p>
         }
 
         {/* <pre>{JSON.stringify(Object.keys(this.state.xmlData?.EasytouristTransfer || {}), '\r\n', 2)}</pre> */}
 
-        {this.state.xmlData && 
-          this.state.xmlData.EasytouristTransfer.Reisen.Reise.map((reise, i) => (
-            <div key={reise.ObjektID}>
-              <h2>{reise.Titel}</h2>
+        <Grid container spacing={2}>
+          {this.state.xmlData &&
+            this.state.xmlData.EasytouristTransfer.Reisen.Reise.map((reise, i) => (
+              <Grid item xs={6} key={reise.ObjektID}>
+                <Card>
+                  <h2>{reise.Titel}</h2>
 
-              {parse(reise.Einfuehrung.html)}
+                  {reise.Typen.Typ.filter((typ) => JSON.parse(typ.Ausgewaehlt)).map((typ) => (
+                    <Chip key={typ.Titel} label={typ.Titel} />
+                  ))}
 
-              {reise.Bilder.Bild?.map((bild, i) => (
-                <img key={bild.Sortierung} src={bild.URL} alt={bild.Titel} width='100px'/>
-              ))}
+                  {parse(reise.Einfuehrung.html)}
 
-              {parse(reise.Beschreibung.html)}
+                  {reise.Bilder.Bild?.map((bild, i) => (
+                    <img key={bild.Sortierung} src={bild.URL} alt={bild.Titel} width='100px' />
+                  ))}
 
-              <b>Leistungen:</b>
-              {parse(reise.Leistung.html)}
-              {/* <p>Termine: {reise.Termine.Termin.termin.Start} - {reise.Termine.Termin.termin.Ende} ({reise.Termine.Termin.termin.Tage} Tage)}</p> */}
-            </div>
-          ))
-        }
+                  {parse(reise.Beschreibung.html)}
+
+                  <b>Leistungen:</b>
+                  {parse(reise.Leistung.html)}
+
+                  <b>Stornierungshinweis: </b>
+                  {parse(reise.Stornierungshinweis.html)}
+                  {/* <p>Termine: {reise.Termine.Termin.termin.Start} - {reise.Termine.Termin.termin.Ende} ({reise.Termine.Termin.termin.Tage} Tage)}</p> */}
+                </Card>
+              </Grid>
+            ))
+          }
+        </Grid>
 
 
         <Dialog open={this.state.open} onClose={this.handleClose}>
-            <DialogTitle>Dialog</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                {this.state.selected}
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button autofocus onClick={this.handleClose}>Close</Button>
-            </DialogActions>
+          <DialogTitle>Dialog</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              {this.state.selected}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button autofocus onClick={this.handleClose}>Close</Button>
+          </DialogActions>
         </Dialog>
       </div>
     );
