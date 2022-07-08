@@ -1,10 +1,11 @@
 import { Component } from 'react'
 import EasytouristService from './services/easytourist'
 import { parseXml } from './utils/xmlUtils'
-import { Card, CardContent, Typography, Grid, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { green } from '@mui/material/colors';
+import parse from 'html-react-parser';
 
 export default class App extends Component {
   constructor() {
@@ -36,7 +37,28 @@ export default class App extends Component {
           <p><CancelIcon color='error' sx={{'verticalAlign': 'middle'}}/> Not initialized</p>
         }
 
-        <pre>{JSON.stringify(Object.keys(this.state.xmlData?.EasytouristTransfer || {}), '\r\n', 2)}</pre>
+        {/* <pre>{JSON.stringify(Object.keys(this.state.xmlData?.EasytouristTransfer || {}), '\r\n', 2)}</pre> */}
+
+        {this.state.xmlData && 
+          this.state.xmlData.EasytouristTransfer.Reisen.Reise.map((reise, i) => (
+            <div key={reise.ObjektID}>
+              <h2>{reise.Titel}</h2>
+
+              {parse(reise.Einfuehrung.html)}
+
+              {reise.Bilder.Bild?.map((bild, i) => (
+                <img key={bild.Sortierung} src={bild.URL} alt={bild.Titel} width='100px'/>
+              ))}
+
+              {parse(reise.Beschreibung.html)}
+
+              <b>Leistungen:</b>
+              {parse(reise.Leistung.html)}
+              {/* <p>Termine: {reise.Termine.Termin.termin.Start} - {reise.Termine.Termin.termin.Ende} ({reise.Termine.Termin.termin.Tage} Tage)}</p> */}
+            </div>
+          ))
+        }
+
 
         <Dialog open={this.state.open} onClose={this.handleClose}>
             <DialogTitle>Dialog</DialogTitle>
