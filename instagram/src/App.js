@@ -10,7 +10,7 @@ class App extends Component {
 
   async componentDidMount() {
     let p_info = await InstagramService.getProfileInfo()
-    let m_info = (await InstagramService.getMediaInfo()).splice(0, 6)
+    let m_info = (await InstagramService.getMediaInfo()).splice(0)
     this.setState({profile_info: p_info, media_info: m_info})
   }
 
