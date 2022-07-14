@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const INSTAGRAM_URL = 'https://graph.instagram.com/'
+// const INSTAGRAM_URL = 'https://graph.instagram.com/'
 const FACEBOOK_URL = 'https://graph.facebook.com/'
 
 // Instagram @andreasnicklaus
@@ -9,23 +9,23 @@ const FACEBOOK_URL = 'https://graph.facebook.com/'
 
 // Instagram @rs.reisen
 const PROFILE_ID = 17841414836400318
-const ACCESS_TOKEN = 'IGQVJWVk9vcm9XRzg0ZA2VfS2tnalpSWDU0RjBjLXBXejg3SEJmNlZAMaWpzMExza1JydFdfSTN3emMxVWtUaHhJTkFOemI5Vy1wODdONDk4OFM0dW5IS3RKOWFpSVNxRV9SNmdaaHZA3'
+// const ACCESS_TOKEN = 'IGQVJWVk9vcm9XRzg0ZA2VfS2tnalpSWDU0RjBjLXBXejg3SEJmNlZAMaWpzMExza1JydFdfSTN3emMxVWtUaHhJTkFOemI5Vy1wODdONDk4OFM0dW5IS3RKOWFpSVNxRV9SNmdaaHZA3'
 const GRAPH_ACCESS_TOKEN = 'EAAIefpZCDrIcBABHREiERtecYFPnhcf91cFrqMw4YR2395PwcjNJ94HSlOZB7bhPJeS3AauBPGZCjQYBi4vJeO3gIMdZArcQyV8iZC2TEPfGr2aqffPxyVCL7hXMfRyAPMz58moXNGkVB0GeOR1AFWZBweyffXQz1jC5Uv2Lpn7aKqURwlJZCX6lgs2ZAoJAqYzBDcUvIMYKvwZDZD'
 
-class InstagramService {
-    getProfileInfo() {
-        return axios.get(INSTAGRAM_URL + PROFILE_ID, {params: {fields: 'account_type,id,media_count,username,media', access_token: ACCESS_TOKEN}})
-            .then((response) => {return response.data})
-            .catch((error) => {console.log(error); return null})
-    }
+// class InstagramService {
+//     getProfileInfo() {
+//         return axios.get(INSTAGRAM_URL + PROFILE_ID, {params: {fields: 'account_type,id,media_count,username,media', access_token: ACCESS_TOKEN}})
+//             .then((response) => {return response.data})
+//             .catch((error) => {console.log(error); return null})
+//     }
 
-    getMediaInfo() {
-        return axios.get(INSTAGRAM_URL + PROFILE_ID + '/media', {params: {fields: 'caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username,children', access_token: ACCESS_TOKEN}})
-            .then((response) => {return response.data.data})
-            .catch((error) => {console.log(error); return null})
-    }
+//     getMediaInfo() {
+//         return axios.get(INSTAGRAM_URL + PROFILE_ID + '/media', {params: {fields: 'caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username,children', access_token: ACCESS_TOKEN}})
+//             .then((response) => {return response.data.data})
+//             .catch((error) => {console.log(error); return null})
+//     }
 
-}
+// }
 
 class InstagramGraphAPI {
     getProfileInfo() {
