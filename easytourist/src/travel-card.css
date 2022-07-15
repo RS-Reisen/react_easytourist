@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+.travel-box {
+  font-family: "Roboto";
+  position: relative;
+  max-width: 358px;
+  display: inline-block;
+  margin: 0;
+  -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.67);
+  box-shadow: 0px 4px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.travel-img {
+  background: linear-gradient(
+      to top,
+      rgba(150, 214, 175, 0.8),
+      rgba(150, 214, 175, 0.8)
+    ),
+    url("img/bodensee.jpg");
+  height: 190px;
+  width: 350px;
+  clip-path: polygon(0 0, 100% 0%, 100% 82%, 0% 99%);
+}
+.heading {
+  position: absolute;
+  right: 13px;
+  top: 47px;
+  transform: rotate(-5deg);
+  text-align: right;
+}
+.heading_destination {
+  font-weight: 800;
+  font-size: 63px;
+  margin-bottom: 0;
+  color: white;
+}
+.heading_description {
+  font-weight: 500;
+  font-size: 23px;
+  margin-top: -5px;
+}
+
+.description {
+  text-align: justify;
+  font-weight: 300;
+  font-size: 17px;
+  margin: 45px 30px 0 30px;
+}
+
+.description_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.description_travel-dates {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.pricing_prefix {
+  display: inline-block;
+  margin-left: 30px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+.pricing_price {
+  font-weight: 800;
+  font-size: 42px;
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.rs-reisen-outline {
+  border: 6px solid rgba(85, 214, 136, 1);
+}
+.rs-reisen-overlay {
+  background: linear-gradient(
+      to top,
+      rgba(85, 214, 136, 0.8),
+      rgba(85, 214, 136, 0.8)
+    ),
+    url("img/bodensee.jpg");
+}
+
+svg {
+  display: none;
+}
+.rs-reisen-logo_visible {
+  display: block;
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+}

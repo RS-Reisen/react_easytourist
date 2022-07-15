@@ -13,6 +13,9 @@ const PROFILE_ID = 17841414836400318
 // const GRAPH_ACCESS_TOKEN = 'EAAIefpZCDrIcBABHREiERtecYFPnhcf91cFrqMw4YR2395PwcjNJ94HSlOZB7bhPJeS3AauBPGZCjQYBi4vJeO3gIMdZArcQyV8iZC2TEPfGr2aqffPxyVCL7hXMfRyAPMz58moXNGkVB0GeOR1AFWZBweyffXQz1jC5Uv2Lpn7aKqURwlJZCX6lgs2ZAoJAqYzBDcUvIMYKvwZDZD'
 const GRAPH_ACCESS_TOKEN = 'EAAIefpZCDrIcBAObM637ilZAGt3ZAd4h8IMEwhmjiyFza5t5JSzZCyMefbuQn1DwyQU9eO8lu3fgPPHGvUWeK9fPpBFke8BXWMO3TQvLo8upLuVc75OfHvNhR0ZAfMcNg0nYmIKwepKFcBxjjJp9tivY1gEcAvZCQKtEwuAxTZAEZBFaXRu3a7Yo'
 
+if (!sessionStorage.getItem('token')) sessionStorage.setItem('token', GRAPH_ACCESS_TOKEN)
+const TOKEN = sessionStorage.getItem('token')
+
 // class InstagramService {
 //     getProfileInfo() {
 //         return axios.get(INSTAGRAM_URL + PROFILE_ID, {params: {fields: 'account_type,id,media_count,username,media', access_token: ACCESS_TOKEN}})
@@ -30,19 +33,19 @@ const GRAPH_ACCESS_TOKEN = 'EAAIefpZCDrIcBAObM637ilZAGt3ZAd4h8IMEwhmjiyFza5t5JSz
 
 class InstagramGraphAPI {
     getProfileInfo() {
-        return axios.get(FACEBOOK_URL + PROFILE_ID, {params: {fields: 'biography,profile_picture_url,username, website,name,media_count,follows_count,followers_count,ig_id', access_token: GRAPH_ACCESS_TOKEN}})
+        return axios.get(FACEBOOK_URL + PROFILE_ID, {params: {fields: 'biography,profile_picture_url,username, website,name,media_count,follows_count,followers_count,ig_id', access_token: TOKEN}})
             .then((response) => {return response.data})
             .catch((error) => {console.log(error); return null})
     }
 
     getMediaInfo() {
-        return axios.get(FACEBOOK_URL + PROFILE_ID + '/media', {params: {fields: 'caption,children,media_type,product_tags,comments_count,is_comment_enabled,like_count,media_product_type,owner,permalink,shortcode,thumbnail_url,timestamp,username,comments,media_url', access_token: GRAPH_ACCESS_TOKEN}})
+        return axios.get(FACEBOOK_URL + PROFILE_ID + '/media', {params: {fields: 'caption,children,media_type,product_tags,comments_count,is_comment_enabled,like_count,media_product_type,owner,permalink,shortcode,thumbnail_url,timestamp,username,comments,media_url', TOKEN: GRAPH_ACCESS_TOKEN}})
             .then((response) => {return response.data.data})
             .catch((error) => {console.log(error); return null})
     }
 
     getStories() {
-        return axios.get(FACEBOOK_URL + PROFILE_ID + '/stories', {params: {fields: '', access_token: GRAPH_ACCESS_TOKEN}})
+        return axios.get(FACEBOOK_URL + PROFILE_ID + '/stories', {params: {fields: '', access_token: TOKEN}})
             .then((response) => {return response.data.data})
             .catch((error) => {console.log(error); return []})
     }
