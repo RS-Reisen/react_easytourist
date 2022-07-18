@@ -39,7 +39,7 @@ class InstagramGraphAPI {
     }
 
     getMediaInfo() {
-        return axios.get(FACEBOOK_URL + PROFILE_ID + '/media', {params: {fields: 'caption,children,media_type,product_tags,comments_count,is_comment_enabled,like_count,media_product_type,owner,permalink,shortcode,thumbnail_url,timestamp,username,comments,media_url', TOKEN: GRAPH_ACCESS_TOKEN}})
+        return axios.get(FACEBOOK_URL + PROFILE_ID + '/media', {params: {fields: 'caption,children,media_type,product_tags,comments_count,is_comment_enabled,like_count,media_product_type,owner,permalink,shortcode,thumbnail_url,timestamp,username,comments,media_url', access_token: TOKEN}})
             .then((response) => {return response.data.data})
             .catch((error) => {console.log(error); return null})
     }
