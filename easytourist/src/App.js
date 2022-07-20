@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import EasytouristService from './services/easytourist'
 import { parseXml } from './utils/xmlUtils'
+import { minPriceFromTrip } from './utils/reiseParser'
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Grid } from '@mui/material'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -25,7 +26,7 @@ export default class App extends Component {
   async componentDidMount() {
     const data = parseXml((await EasytouristService.getCatalog()).data)
     this.setState({ ...this.state, xmlData: data, initialized: true })
-    console.log(data)
+    console.log(data.EasytouristTransfer.Reisen.Reise)
   }
 
   render() {
@@ -44,14 +45,14 @@ export default class App extends Component {
           {this.state.xmlData &&
             this.state.xmlData.EasytouristTransfer.Reisen.Reise.sort((a, b) => {
               return (new Date(a.Termine.Termin.Start) - new Date(b.Termine.Termin.Start))
-            }).map((reise, i) => (
-              <Grid item xs={6} key={reise.Termine.Termin.Start}>
+            }).map((reise) => (
+              <Grid item xl={3} md={4} sm={6} xs={12} key={reise.Termine.Termin.Start} style={{display: 'grid', placeItems: 'center'}}>
                 <div class="travel-box rs-reisen-outline" key={reise.ObjektID}>
-                  <div class="travel-img rs-reisen-overlay"></div>
-                  <div class="heading">
-                    <h2 class="heading_destination">{reise.Ziel.Stadt}</h2>
-                    <h3 class="heading_description">{reise.Titel}</h3>
-                  </div>
+                  <div class="travel-img rs-reisen-overlay" style={{background: `linear-gradient(to top, rgba(150, 214, 175, 0.3), rgba(150, 214, 175, 0.5)),
+                    url(${reise.Bilder.Bild[0].URL})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}></div>
+                  <h2 lang='de' class="heading_destination">{reise.Ziel.Stadt}</h2>
+                  {/* <h2 lang='de' class="heading_destination">{parse('Nord&shy;friesland')}</h2> */}
+                  <h3 class="heading_description">{reise.Titel}</h3>
                   <div class="description">
                     <div class="description_text">
                     {parse(reise.Einfuehrung.html)}
@@ -63,7 +64,7 @@ export default class App extends Component {
                   </div>
                   <div class="pricing">
                     <p class="pricing_prefix">ab</p>
-                    <p class="pricing_price">950€</p>
+                    <p class="pricing_price">{minPriceFromTrip(reise)}€</p>
                   </div>
                   <svg
                     class="rs-reisen-logo_visible"

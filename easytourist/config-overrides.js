@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 // config-overrides.js
 module.exports = {
   webpack: function (config, env) {
@@ -6,6 +8,12 @@ module.exports = {
         filename: "static/js/[name].js",
         chunkFilename: "static/js/[name].chunk.js",
       };
+
+      config.plugins.push(new MiniCssExtractPlugin({
+        filename: 'static/css/[name].css',
+        // chunkFilename: `static/css/[name].chunk.js`,
+        })
+      )
 
     return config;
   }
