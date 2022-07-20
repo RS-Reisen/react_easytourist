@@ -1,16 +1,17 @@
 {
   "files": {
+    "main.css": "/static/css/main.f8ab981a.css",
     "main.js": "/static/js/main.js",
-    "main.css": "/static/css/main.7dbaae78.css",
     "static/js/512.chunk.js": "/static/js/512.chunk.js",
-    "static/media/bodensee.jpg": "/static/media/bodensee.eae793123ae261767279.jpg",
     "index.html": "/index.html",
+    "main.css.map": "/static/css/main.css.map",
     "main.js.map": "/static/js/main.js.map",
-    "main.7dbaae78.css.map": "/static/css/main.7dbaae78.css.map",
+    "main.f8ab981a.css.map": "/static/css/main.f8ab981a.css.map",
     "512.chunk.js.map": "/static/js/512.chunk.js.map"
   },
   "entrypoints": [
+    "static/css/main.css",
     "static/js/main.js",
-    "static/css/main.7dbaae78.css"
+    "static/css/main.f8ab981a.css"
   ]
 }
