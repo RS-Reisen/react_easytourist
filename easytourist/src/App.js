@@ -26,7 +26,7 @@ export default class App extends Component {
   async componentDidMount() {
     const data = parseXml((await EasytouristService.getCatalog()).data)
     this.setState({ ...this.state, xmlData: data, initialized: true })
-    console.log(data.EasytouristTransfer.Reisen.Reise)
+    console.log(data)
   }
 
   render() {
@@ -47,27 +47,27 @@ export default class App extends Component {
               return (new Date(a.Termine.Termin.Start) - new Date(b.Termine.Termin.Start))
             }).map((reise) => (
               <Grid item xl={3} md={4} sm={6} xs={12} key={reise.Termine.Termin.Start} style={{display: 'grid', placeItems: 'center'}}>
-                <div class="travel-box rs-reisen-outline" key={reise.ObjektID}>
-                  <div class="travel-img rs-reisen-overlay" style={{background: `linear-gradient(to top, rgba(150, 214, 175, 0.3), rgba(150, 214, 175, 0.5)),
+                <div className="travel-box rs-reisen-outline" key={reise.ObjektID}>
+                  <div className="travel-img rs-reisen-overlay" style={{background: `linear-gradient(to top, rgba(150, 214, 175, 0.3), rgba(150, 214, 175, 0.5)),
                     url(${reise.Bilder.Bild[0].URL})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}></div>
-                  <h2 lang='de' class="heading_destination">{reise.Ziel.Stadt}</h2>
-                  {/* <h2 lang='de' class="heading_destination">{parse('Nord&shy;friesland')}</h2> */}
-                  <h3 class="heading_description">{reise.Titel}</h3>
-                  <div class="description">
-                    <div class="description_text">
+                  <h2 lang='de' className="heading_destination">{reise.Ziel.Stadt}</h2>
+                  {/* <h2 lang='de' className="heading_destination">{parse('Nord&shy;friesland')}</h2> */}
+                  <h3 className="heading_description">{reise.Titel}</h3>
+                  <div className="description">
+                    <div className="description_text">
                     {parse(reise.Einfuehrung.html)}
                     </div>
-                    { reise.Termine.Termin && <p class="description_travel-dates">
+                    { reise.Termine.Termin && <p className="description_travel-dates">
                       {reise.Termine.Termin.Tage} Tag{(reise.Termine.Termin.Tage > 1) ? 'e' : ''}: <br />
                       {new Date(reise.Termine.Termin.Start).toLocaleDateString('de')} - {new Date(reise.Termine.Termin.Ende).toLocaleDateString('de')}
                     </p>}
                   </div>
-                  <div class="pricing">
-                    <p class="pricing_prefix">ab</p>
-                    <p class="pricing_price">{minPriceFromTrip(reise)}€</p>
+                  <div className="pricing">
+                    <p className="pricing_prefix">ab</p>
+                    <p className="pricing_price">{minPriceFromTrip(reise)}€</p>
                   </div>
                   <svg
-                    class="rs-reisen-logo_visible"
+                    className="rs-reisen-logo_visible"
                     width="65"
                     height="66"
                     viewBox="0 0 65 66"
