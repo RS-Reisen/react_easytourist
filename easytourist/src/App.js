@@ -8,6 +8,16 @@ import { green } from '@mui/material/colors';
 import TravelCard from './components/TravelCard'
 import SearchBar from './components/searchBar';
 
+import styled from 'styled-components'
+
+const Title = styled.h1`
+  color: red;
+
+  &:hover {
+    color: black;
+  }
+`
+
 export default class App extends Component {
   constructor() {
     super();
@@ -37,8 +47,7 @@ export default class App extends Component {
     if (param === null) return new Date().toISOString().split('T')[0]
     if (param === '') return null
     return param
-}
-
+  }
 
   filterReisen = (reise) => {
     return (
@@ -60,7 +69,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Squarespace - Easytourist</h1>
+        <Title>Squarespace - Easytourist</Title>
 
         {this.state.initialized ?
           <p><CheckCircleRoundedIcon sx={{ color: green[500], 'verticalAlign': 'middle' }} /> Initialized</p> :
