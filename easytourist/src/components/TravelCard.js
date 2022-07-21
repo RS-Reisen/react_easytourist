@@ -8,7 +8,7 @@ export default class TravelCard extends Component {
     render() {
         const reise = this.props.reise
         return (
-            <div className="travel-box rs-reisen-outline" key={reise.ObjektID}>
+            <div className="travel-box rs-reisen-outline" key={reise.ObjektID} style={{backgroundColor: 'white'}}>
                 <div className="travel-img rs-reisen-overlay" style={{
                     background: `linear-gradient(to top, rgba(150, 214, 175, 0.3), rgba(150, 214, 175, 0.5)),
                     url(${reise.Bilder.Bild[0].URL})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover'

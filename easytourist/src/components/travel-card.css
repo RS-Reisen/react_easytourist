@@ -10,7 +10,7 @@
   width: 100%;
   -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.67);
   box-shadow: 0px 4px 20px 0 rgba(0, 0, 0, 0.1);
-  background-color: white;
+  /* background-color: white; */
 }
 
 .travel-img {

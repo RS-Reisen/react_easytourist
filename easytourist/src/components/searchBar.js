@@ -1,16 +1,22 @@
 import { Component } from 'react';
 import './searchBar.css'
 
+const today = new Date().toISOString().split('T')[0]
 export default class SearchBar extends Component {
     constructor() {
         super();
-        this.today = new Date().toISOString().split('T')[0]
-        this.state = { destination: '', travelDate: this.today }
+        this.state = { destination: '', travelDate: today }
     }
 
     componentDidMount() {
         const params = new URLSearchParams(window.location.search)
-        this.setState({destination: params.getAll('destination').join(',') || '', travelDate: params.get('travelDate') || this.state.travelDate})
+        this.setState({destination: params.getAll('destination').join(',') || '', travelDate: this.generateTravelDateFromParam(params.get('travelDate'))})
+    }
+
+    generateTravelDateFromParam(param) {
+        if (param === null) return today
+        if (param === '') return ''
+        return param
     }
 
     search = () => {
@@ -49,7 +55,9 @@ export default class SearchBar extends Component {
                         value={this.state.travelDate} onChange={(e) => this.setState({...this.state, travelDate: e.target.value})} />
                 </div>
                 <div className="search-field">
-                    <input type="button" value="suchen" onClick={this.search} />
+                    <input type="submit" value="suchen"
+                    // onClick={this.search}
+                    />
                 </div>
             </form>
         )

@@ -27,10 +27,18 @@ export default class App extends Component {
       travelData: data,
       initialized: true,
       destination: params.getAll('destination'),
-      travelDate: params.get('travelDate') || new Date().toISOString().split('T')[0]
+      travelDate: this.generateTravelDateFromParam(params.get('travelDate'))
     })
     console.log(this.state)
   }
+
+  generateTravelDateFromParam(param) {
+    console.log('travelDate', JSON.stringify(param))
+    if (param === null) return new Date().toISOString().split('T')[0]
+    if (param === '') return null
+    return param
+}
+
 
   filterReisen = (reise) => {
     return (
