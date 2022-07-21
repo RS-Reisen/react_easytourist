@@ -18,6 +18,10 @@ const Title = styled.h1`
   }
 `
 
+const ExtraTitle = styled(Title)`
+  background-color: papayawhip;
+`
+
 export default class App extends Component {
   constructor() {
     super();
@@ -69,7 +73,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Title>Squarespace - Easytourist</Title>
+        <ExtraTitle>Squarespace - Easytourist</ExtraTitle>
 
         {this.state.initialized ?
           <p><CheckCircleRoundedIcon sx={{ color: green[500], 'verticalAlign': 'middle' }} /> Initialized</p> :
