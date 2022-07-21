@@ -1,0 +1,124 @@
+.search-bar {
+    font-family: "Roboto";
+    /* display: inline-block; */
+    width: fit-content;
+    margin: 10px auto;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0,
+      rgba(255, 255, 255, 1) 72%,
+      #55d688 72%,
+      #55d688 100%
+    );
+    border-radius: 100px;
+    padding: 0 44px 0 35px;
+    position: relative;
+    border: 2px solid white;
+  }
+  .search-bar > * {
+    display: inline-block;
+  }
+
+  .destination-field svg {
+    display: block;
+  }
+
+  .destination-field {
+    border-right: 0.5px solid black;
+    padding: 13px 0 13px 0;
+  }
+
+  .destination-field > input {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 15px;
+    max-width: 130px;
+  }
+
+  .destination-field > input:active,
+  input:focus {
+    border: none;
+    outline: none;
+  }
+
+  .destination-field > label {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    opacity: 0.9;
+  }
+
+  .travel-dates-field {
+    position: relative;
+    margin-left: 15px;
+    margin-right: 50px;
+  }
+
+  .travel-dates-field > input {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 25px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 15px;
+    color: black;
+    max-width: 120px;
+    padding-left: 8px;
+    z-index: 2;
+  }
+
+  .travel-dates-field > input::-webkit-calendar-picker-indicator {
+    /* display: none; */
+    width: 19px;
+    height: 21px;
+    position: absolute;
+    left: 0;
+  }
+
+  .travel-dates-field > input:active,
+  input:focus {
+    border: none;
+    outline: none;
+  }
+
+  .travel-dates-field > input:focus + p {
+    display: none;
+  }
+
+  .travel-dates-field > p {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 32px;
+    font-family: "Roboto";
+    font-weight: 300;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .travel-dates-field > label {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    opacity: 0.9;
+  }
+
+  .search-field > input {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: underline;
+    background-color: #55d688;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 18px 0 18px 0;
+  }
